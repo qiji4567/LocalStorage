@@ -17,6 +17,7 @@ import java.util.List;
 
 import cn.angeldo.magicalchicken.R;
 import cn.angeldo.magicalchicken.model.CardInfoBean;
+import cn.angeldo.magicalchicken.utils.LogUtils;
 
 import static android.support.v4.content.ContextCompat.getDrawable;
 
@@ -73,7 +74,7 @@ public class CardAdp extends RecyclerView.Adapter {
 
     @Override
     public CardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CardHolder(LayoutInflater.from(context).inflate(R.layout.item_fra_card, parent,false));
+        return new CardHolder(LayoutInflater.from(context).inflate(R.layout.item_fra_card, parent, false));
     }
 
     @Override
@@ -108,6 +109,7 @@ public class CardAdp extends RecyclerView.Adapter {
                     btn_params.setMargins(4, 4, 4, 4);
                     btn_params.gravity = Gravity.CENTER_HORIZONTAL;
                     num1.setLayoutParams(btn_params);
+                    LogUtils.d("添加的号码是：", num1.getText().toString());
                     holder.listNum.addView(num1);
                 }
             }
