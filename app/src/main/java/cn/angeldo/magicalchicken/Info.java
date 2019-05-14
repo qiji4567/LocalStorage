@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
-import cn.angeldo.magicalchicken.act.MainActivity;
+import cn.angeldo.magicalchicken.act.MainAct;
 
 public class Info extends Activity {
 
@@ -23,7 +23,7 @@ public class Info extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), MainActivity.class);
+            intent.setClass(getApplicationContext(), MainAct.class);
             startActivity(intent);
             finish();
         }

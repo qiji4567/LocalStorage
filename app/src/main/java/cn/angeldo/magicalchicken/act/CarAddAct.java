@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -37,7 +38,7 @@ import cn.angeldo.magicalchicken.R;
 import cn.angeldo.magicalchicken.utils.FileUtils;
 
 public class CarAddAct extends Activity {
-    public TextView caseResult;
+    public TextView caseResult, tv_num;
     public CheckBox caseTypeNum;
     public CheckBox caseTypeWord;
     public CheckBox caseTypeDXX;
@@ -58,12 +59,13 @@ public class CarAddAct extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cardadd);
+        setContentView(R.layout.act_card_add);
 
-        Button btnBack = (Button) findViewById(R.id.btn_back);
+        FrameLayout fl_back = (FrameLayout) findViewById(R.id.fl_back);
         Button btnCreate = (Button) findViewById(R.id.btn_create);
         Button btnSave = (Button) findViewById(R.id.btn_save);
         caseResult = (TextView) findViewById(R.id.case_result);
+        tv_num = (TextView) findViewById(R.id.tv_num);
         caseTypeNum = (CheckBox) findViewById(R.id.case_type_num);
         caseTypeWord = (CheckBox) findViewById(R.id.case_type_word);
         caseTypeDXX = (CheckBox) findViewById(R.id.case_type_dxx);
@@ -89,11 +91,11 @@ public class CarAddAct extends Activity {
             }
         });
         //返回按钮
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        fl_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(getApplicationContext(), MainActivity.class);
+                intent.setClass(getApplicationContext(), MainAct.class);
                 startActivity(intent);
                 finish();
             }
@@ -150,7 +152,7 @@ public class CarAddAct extends Activity {
                     if (FileUtils.writeFileFromString(url, strContent, false)) {
                         Toast.makeText(CarAddAct.this, "新的方案结果已经保存",
                                 Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CarAddAct.this, MainActivity.class);
+                        Intent intent = new Intent(CarAddAct.this, MainAct.class);
                         startActivity(intent);
                         finish();
                     }
@@ -212,7 +214,9 @@ public class CarAddAct extends Activity {
         jo.put("created", dateFormat.format(new Date()));
         //把JSONObject 添加到JSONArray
         arrayResult.put(jo);
-        Log.i("双色球的json" + getClass().getSimpleName(), "" + arrayResult.toString());
+
+        tv_num.setText("生成数量:" + arrayResult.length() + " 注");
+        Log.i("双色球的json" + getClass().getSimpleName(), "" + arrayResult.toString() + "数量：" + arrayResult.length());
         return ssqRedStr + ssqBlueStr;
     }
 
@@ -252,7 +256,7 @@ public class CarAddAct extends Activity {
         //把JSONObject 添加到JSONArray
         arrayResult.put(jo);
         Log.i("大乐透的json" + getClass().getSimpleName(), "" + arrayResult.toString());
-
+        tv_num.setText("生成数量:" + arrayResult.length() + " 注");
         return Arrays.toString(dltRed) + Arrays.toString(dltBlue);
     }
 
@@ -284,6 +288,7 @@ public class CarAddAct extends Activity {
         //把JSONObject 添加到JSONArray
         arrayResult.put(jo);
         Log.i("自定义的json", "" + arrayResult.toString());
+        tv_num.setText("生成数量:" + arrayResult.length() + " 注");
         return sbStr;
     }
 
@@ -303,7 +308,7 @@ public class CarAddAct extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), MainActivity.class);
+            intent.setClass(getApplicationContext(), MainAct.class);
             startActivity(intent);
             finish();
         }

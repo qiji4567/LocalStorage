@@ -24,7 +24,7 @@ import cn.angeldo.magicalchicken.CardFra;
 import cn.angeldo.magicalchicken.Info;
 import cn.angeldo.magicalchicken.R;
 
-public class MainActivity extends Activity {
+public class MainAct extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
