@@ -112,16 +112,16 @@ public class CardAdp extends RecyclerView.Adapter {
                     btn_params.setMargins(4, 4, 4, 4);
                     btn_params.gravity = Gravity.CENTER;
                     num1.setLayoutParams(btn_params);
-                    LogUtils.d("双色球-添加的号码是：", num1.getText().toString());
+                    LogUtils.d("双色球-添加的号码是：", blist.length);
                     holder.listNum.addView(num1);
                     //设置textview 大小
                     ViewGroup.LayoutParams layoutParams = num1.getLayoutParams();
-                    layoutParams.height = DisplayUtil.px2dip(context, 150);
-                    layoutParams.width = DisplayUtil.px2dip(context, 150);
+                    layoutParams.height = DisplayUtil.dip2px(context, 40);
+                    layoutParams.width = DisplayUtil.dip2px(context, 40);
                     num1.setLayoutParams(layoutParams);
                 }
             }
-            if (bean.getType() == 2&& TextUtils.equals("大乐透", mList.get(position).getMark())) {//大乐透
+            if (bean.getType() == 2 && TextUtils.equals("大乐透", mList.get(position).getMark())) {//大乐透
 
                 String balllist = bean.getRedball() + "," + bean.getBlueball();
                 String[] blist = balllist.split(",");
@@ -143,12 +143,12 @@ public class CardAdp extends RecyclerView.Adapter {
                     btn_params.setMargins(4, 4, 4, 4);
                     btn_params.gravity = Gravity.CENTER_HORIZONTAL;
                     num1.setLayoutParams(btn_params);
-                    LogUtils.d("大乐透-添加的号码是：", num1.getText().toString());
+                    LogUtils.d("大乐透-添加的号码是：", blist.length);
                     holder.listNum.addView(num1);
                     //设置textview 大小
                     ViewGroup.LayoutParams layoutParams = num1.getLayoutParams();
-                    layoutParams.height = DisplayUtil.px2dip(context, 150);
-                    layoutParams.width = DisplayUtil.px2dip(context, 150);
+                    layoutParams.height = DisplayUtil.dip2px(context, 40);
+                    layoutParams.width = DisplayUtil.dip2px(context, 40);
                     num1.setLayoutParams(layoutParams);
                 }
             }
@@ -159,12 +159,12 @@ public class CardAdp extends RecyclerView.Adapter {
                 num1.setTextColor(Color.BLACK);
                 num1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                 num1.setGravity(Gravity.CENTER);
-                LogUtils.d("自定义-添加的号码是：", num1.getText().toString());
+                LogUtils.d("自定义-添加的号码是：", mList.toString());
                 holder.listNum.addView(num1);
                 //设置textview 大小
                 ViewGroup.LayoutParams layoutParams = num1.getLayoutParams();
-                layoutParams.height = DisplayUtil.px2dip(context, 150);
-                layoutParams.width = DisplayUtil.px2dip(context, 150);
+                layoutParams.height = DisplayUtil.dip2px(context, 40);
+                layoutParams.width = DisplayUtil.dip2px(context, 40);
                 num1.setLayoutParams(layoutParams);
             }
         }
