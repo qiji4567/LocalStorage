@@ -21,6 +21,7 @@ import java.util.List;
 
 import cn.angeldo.magicalchicken.adp.CardAdp;
 import cn.angeldo.magicalchicken.model.CardInfoBean;
+import cn.angeldo.magicalchicken.utils.LogUtils;
 import cn.angeldo.magicalchicken.view.DividerItemDecoration1;
 
 
@@ -100,8 +101,9 @@ public class CardFra extends Fragment {
                             infoBeanList.add(infoBean);
                         }
                     }
-                    Log.d("解析数据是:....." + getClass().getSimpleName(), jsonArray.toString());
+//                    Log.d("解析数据是:....." + getClass().getSimpleName(), jsonArray.toString());
                     if (jsonArray != null && jsonArray.size() > 0) {
+                        LogUtils.d("解析数据是....." ,infoBeanList.toString());
                         cardAdp.setList(infoBeanList);
                         cardAdp.notifyDataSetChanged();
                     }

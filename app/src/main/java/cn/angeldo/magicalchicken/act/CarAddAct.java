@@ -54,7 +54,7 @@ public class CarAddAct extends Activity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
     //请求状态码
     private static int REQUEST_PERMISSION_CODE = 1;
-
+    private String url = Environment.getExternalStorageDirectory().toString() + "/magicalchiken/" + "tmp.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,9 @@ public class CarAddAct extends Activity {
         fl_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (FileUtils.isFileExists(url)) {
+                    FileUtils.deleteFile(url);
+                }
                 Intent intent = new Intent();
                 intent.setClass(getApplicationContext(), MainAct.class);
                 startActivity(intent);
@@ -143,7 +146,7 @@ public class CarAddAct extends Activity {
                     if (ActivityCompat.checkSelfPermission(CarAddAct.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(CarAddAct.this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
                     }
-                    String url = Environment.getExternalStorageDirectory().toString() + "/magicalchiken/" + "tmp.txt";
+
                     if (arrayResult == null || TextUtils.isEmpty(caseResult.getText().toString())) {
                         Toast.makeText(CarAddAct.this, "请确认生成选择类型!", Toast.LENGTH_SHORT).show();
                         return;
